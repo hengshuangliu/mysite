@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'^index/', demo_views.index),
     url(r'^add/(\d+)/(\d+)/$', demo_views.demo_add, name="demo_add"),
     url(r'^new_add/(\d+)/(\d+)/$', demo_views.demo_add, name="new_add"),\
-    # url(r'^add2/', demo_views.add2),
+    url(r'^sub/', demo_views.sub),
     url(r'^admin/', admin.site.urls),
 ]

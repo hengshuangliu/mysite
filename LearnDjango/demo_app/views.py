@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from demo_app import models
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from .forms import AddForm
+
 
 # Create your views here.
 # user_list = [
@@ -25,7 +27,8 @@ def index(request):
         a = request.GET.get('a', 0)
         b = request.GET.get('b', 0)
     add_result = str(int(a) + int(b))
-    return render(request, "index.html", {"data": user_list, "a": a, "b": b, "add_result": add_result})
+    form = AddForm()
+    return render(request, "index.html", {"data": user_list, "a": a, "b": b, "add_result": add_result, "form": form})
 
 
 def demo_add(request, a, b):
@@ -37,10 +40,14 @@ def new_add(request, a, b):
     return HttpResponseRedirect(reverse("demo_add", args=(a, b))) # realize redirecting.
 
 
-# def add2(request):
-#     a = request.GET.get('a',None)
-#     b = request.GET.get('b',None)
-#     a = int(a)
-#     b = int(b)
-#     return HttpResponse(str(a + b))
+def sub(request):
+    if request.method == "GET":
+        form = AddForm(request.GET)
+        if form.is_valid():
+            a = form.cleaned_data['a']
+            b = form.cleaned_data['b']
+            return HttpResponse(str(a - b))
+    else:
+        return HttpResponse("Valid")
+
 

@@ -9,8 +9,8 @@
     <h1 style="background-color:antiquewhite;color:black;">Hello World</h1>
     <h2>User Input</h2>
     <form action="/index/" method="post">
-        <input type="text" name="username"/>
-        <input type="password" name="password"/>
+        username: <input type="text" name="username"/>
+        password: <input type="password" name="password"/>
         <input type="submit" value="submit"/>
     </form>
 
@@ -36,6 +36,12 @@
         b: <input type="text" name="b"/> <br>
         <input type="submit" value="submit"/>
     </form>
-    <h2>Result:{{a}} + {{b}} = {{ add_result }}</h2>
+    <h3>Result:{{a}} + {{b}} = {{ add_result }}</h3>
+    <h2>Please input integers</h2>
+    <form action="/sub/" method="get">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="submit"/>
+    </form>
 </body>
 </html>
