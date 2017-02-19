@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo_index</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/demo.css">
+</head>
+<body>
+    <h1 style="background-color:antiquewhite;color:black;">Hello World</h1>
+    <h2>User Input</h2>
+    <form action="/index/" method="post">
+        <input type="text" name="username"/>
+        <input type="password" name="password"/>
+        <input type="submit" value="submit"/>
+    </form>
+
+    <h2>user_show</h2>
+    <table border="1">
+        <thead>
+            <th>username</th>
+            <th>password</th>
+        </thead>
+        <tbody>
+            {% for line in data %}
+            <tr>
+                <td>{{ line.user }}</td>
+                <td>{{ line.pwd }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="/static/js/document_write.js"></script>
+    <h2>Please input integers</h2>
+    <form action="/index/" method="get">
+        a: <input type="text" name="a"/> <br>
+        b: <input type="text" name="b"/> <br>
+        <input type="submit" value="submit"/>
+    </form>
+    <h2>Result:{{a}} + {{b}} = {{ add_result }}</h2>
+</body>
+</html>
