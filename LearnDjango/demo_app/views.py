@@ -4,6 +4,8 @@ from demo_app import models
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from .forms import AddForm
+from django.core.mail import send_mail
+from django.core.mail import send_mass_mail
 
 
 # Create your views here.
@@ -21,8 +23,8 @@ def index(request):
         # print(username, password)
         # temp_user = {"user": username, "pwd": password}
         # user_list.append(temp_user)
-        models.UserInfo.objects.create(user=username, pwd=password) # save data in database.
-    user_list = models.UserInfo.objects.all() # get data from database.
+        models.UserInfo.objects.create(user=username, pwd=password)  # save data in database.
+    user_list = models.UserInfo.objects.all()  # get data from database.
     if request.method == 'GET':
         a = request.GET.get('a', 0)
         b = request.GET.get('b', 0)
@@ -37,7 +39,7 @@ def demo_add(request, a, b):
 
 
 def new_add(request, a, b):
-    return HttpResponseRedirect(reverse("demo_add", args=(a, b))) # realize redirecting.
+    return HttpResponseRedirect(reverse("demo_add", args=(a, b)))  # realize redirecting.
 
 
 def sub(request):
@@ -51,3 +53,12 @@ def sub(request):
         return HttpResponse("Valid")
 
 
+def send_email(request):
+    if request.method == "GET":
+        subject = request.GET.get('subject', 'greeting')
+        content = request.GET.get('content', 'Hello')
+        toemail = request.GET.get('toemail', '767924520@qq.com')
+        send_mail(subject, content, 'hengshuangliu@mails.ccnu.edu.cn', [toemail], fail_silently=False)
+        return HttpResponse("Succussed")
+    else:
+        return HttpResponse("Failed")

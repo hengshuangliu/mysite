@@ -123,3 +123,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'smtp.exmail.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'hengshuangliu@mails.ccnu.edu.cn'
+EMAIL_HOST_PASSWORD = 'lovehuang888'
+DEFAULT_FROM_EMAIL = 'hengshuangliu@mails.ccnu.edu.cn'

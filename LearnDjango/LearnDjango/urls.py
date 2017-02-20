@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^add/(\d+)/(\d+)/$', demo_views.demo_add, name="demo_add"),
     url(r'^new_add/(\d+)/(\d+)/$', demo_views.demo_add, name="new_add"),\
     url(r'^sub/', demo_views.sub),
+    url(r'^sendemail/', demo_views.send_email),
     url(r'^admin/', admin.site.urls),
 ]

@@ -43,5 +43,12 @@
         {{ form }}
         <input type="submit" value="submit"/>
     </form>
+    <h2>Send Email</h2>
+    <form action="/sendemail/" method="get">
+        subject: <input type="text" name="subject"/> <br>
+        content: <input type="text" name="content"/> <br>
+        to: <input type="text" name="toemail"/> <br>
+        <input type="submit" value="submit"/>
+    </form>
 </body>
 </html>
